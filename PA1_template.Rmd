@@ -77,7 +77,7 @@ weekend
 ```{r}
 # weekens data plot
 weekend = subset(filecontent, filecontent$weekend=="weekend")
-agg_weekend = aggregate( steps ~ interval, data = weekend, FUN = mean, na.rm = TRUE)
+#agg_weekend = aggregate( steps ~ interval, data = weekend, FUN = mean, na.rm = TRUE)
 #plot(agg_weekend$interval, agg_weekend$steps, type = "l")
 ```
 

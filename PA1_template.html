@@ -125,7 +125,7 @@ weekday = subset(filecontent, filecontent$weekend==&quot;weekday&quot;)
 #plot(agg_weekday$interval, agg_weekday$steps, type = &quot;l&quot;)</code></pre>
 <p>weekend</p>
 <pre class="r"><code># weekens data plot
-#weekend = subset(filecontent, weekend==&quot;weekend&quot;)
+weekend = subset(filecontent, filecontent$weekend==&quot;weekend&quot;)
 #agg_weekend = aggregate( steps ~ interval, data = weekend, FUN = mean, na.rm = TRUE)
 #plot(agg_weekend$interval, agg_weekend$steps, type = &quot;l&quot;)</code></pre>
 </div>
