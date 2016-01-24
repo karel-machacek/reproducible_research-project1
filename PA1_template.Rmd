@@ -56,3 +56,29 @@ sapply(agg_filecontent2, max, na.rm = TRUE)
 sum(is.na(filecontent$steps))
 ```
 
+
+## Are there differences in activity patterns between weekdays and weekends?
+
+weekday
+```{r}
+filecontent$date2 = as.Date(filecontent$date, format = "%Y-%m-%d")
+filecontent$weekday = weekdays(filecontent$date2)
+# set weekends to weekend
+filecontent[grep("S", filecontent$weekday),]$weekend="weekend"
+# set weekdays to weekday
+filecontent[grep("S", filecontent$weekday, invert=TRUE),]$weekend="weekday"
+# weekday data plot
+weekday = subset(filecontent, filecontent$weekend=="weekday")
+#agg_weekday = aggregate( steps ~ interval, data = weekday, FUN = mean, na.rm = TRUE)
+#plot(agg_weekday$interval, agg_weekday$steps, type = "l")
+```
+
+weekend
+```{r}
+# weekens data plot
+weekend = subset(filecontent, filecontent$weekend=="weekend")
+agg_weekend = aggregate( steps ~ interval, data = weekend, FUN = mean, na.rm = TRUE)
+#plot(agg_weekend$interval, agg_weekend$steps, type = "l")
+```
+
+

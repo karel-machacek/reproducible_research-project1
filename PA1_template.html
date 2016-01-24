@@ -106,6 +106,29 @@ sapply(agg_filecontent2, max, na.rm = TRUE)</code></pre>
 sum(is.na(filecontent$steps))</code></pre>
 <pre><code>## [1] 2304</code></pre>
 </div>
+<div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level2">
+<h2>Are there differences in activity patterns between weekdays and weekends?</h2>
+<p>weekday</p>
+<pre class="r"><code>filecontent$date2 = as.Date(filecontent$date, format = &quot;%Y-%m-%d&quot;)
+filecontent$weekday = weekdays(filecontent$date2)
+# set weekends to weekend
+filecontent[grep(&quot;S&quot;, filecontent$weekday),]$weekend=&quot;weekend&quot;</code></pre>
+<pre><code>## Warning in `[&lt;-.data.frame`(`*tmp*`, grep(&quot;S&quot;, filecontent$weekday), ,
+## value = structure(list(: provided 6 variables to replace 5 variables</code></pre>
+<pre class="r"><code># set weekdays to weekday
+filecontent[grep(&quot;S&quot;, filecontent$weekday, invert=TRUE),]$weekend=&quot;weekday&quot;</code></pre>
+<pre><code>## Warning in `[&lt;-.data.frame`(`*tmp*`, grep(&quot;S&quot;, filecontent$weekday, invert
+## = TRUE), : provided 6 variables to replace 5 variables</code></pre>
+<pre class="r"><code># weekday data plot
+weekday = subset(filecontent, filecontent$weekend==&quot;weekday&quot;)
+#agg_weekday = aggregate( steps ~ interval, data = weekday, FUN = mean, na.rm = TRUE)
+#plot(agg_weekday$interval, agg_weekday$steps, type = &quot;l&quot;)</code></pre>
+<p>weekend</p>
+<pre class="r"><code># weekens data plot
+#weekend = subset(filecontent, weekend==&quot;weekend&quot;)
+#agg_weekend = aggregate( steps ~ interval, data = weekend, FUN = mean, na.rm = TRUE)
+#plot(agg_weekend$interval, agg_weekend$steps, type = &quot;l&quot;)</code></pre>
+</div>
 </div>
 
 
